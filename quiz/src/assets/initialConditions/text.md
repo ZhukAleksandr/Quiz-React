@@ -7,11 +7,11 @@
 [X] “Start quiz” button 
 [X] “See my stats” button -->
 
-[-] ha2 in this homework we are creating a quiz results screen. This screen will after users finish their quiz, either by answering all the questions or running out of time. For now we can just put this new screen as the root screen of our application, because we don’t have navigation yet. Results screen should include following components:
+<!-- [X] ha2 in this homework we are creating a quiz results screen. This screen will after users finish their quiz, either by answering all the questions or running out of time. For now we can just put this new screen as the root screen of our application, because we don’t have navigation yet. Results screen should include following components:
 
-[-] General result text like “Thank you for completing this quiz. Here are your results” Result in numbers of correct answers. For example “You answered 5 out of 10 questions correctly”. Quiz configuration, type, category, time and difficulty Text indicating how much time user took to answer all the questions 
-[-] A button “Restart” which will restart this same quiz with same configuration from the start 
-[-] A button “Choose another quiz” which will navigate the user to quiz configuration screen
+[X] General result text like “Thank you for completing this quiz. Here are your results” Result in numbers of correct answers. For example “You answered 5 out of 10 questions correctly”. Quiz configuration, type, category, time and difficulty Text indicating how much time user took to answer all the questions 
+[X] A button “Restart” which will restart this same quiz with same configuration from the start 
+[X] A button “Choose another quiz” which will navigate the user to quiz configuration screen
 
-For now we only focus on creating the UI part without any actual logic, we will add it later on
+For now we only focus on creating the UI part without any actual logic, we will add it later on -->
 
