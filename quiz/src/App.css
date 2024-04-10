@@ -46,7 +46,8 @@ h2 {
 .quiz-box {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 20px;
   min-width: 600px;
   align-items: center;
   min-height: 80vh;
@@ -154,4 +155,17 @@ button:hover{
       opacity: 1;
     }
   }
+}
+
+.timer {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }

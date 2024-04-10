@@ -12,24 +12,24 @@ function MainPage () {
         return options;
     };
 
-    return (        
+    return (
         <div className="quiz-box">
             <h1>Quiz main page</h1>
 
             <div className="quiz-settings">
                 <h2>Select category:</h2>
                 <select>
-                    <option value="1">Geogrphy</option>                    
+                    <option value="1">Geogrphy</option>
                 </select>
 
                 <h2>Select difficulty:</h2>
                 <select>
-                    <option value="2">Hard</option>                    
+                    <option value="2">Hard</option>
                 </select>
 
                 <h2>Select type:</h2>
                 <select>
-                    <option value="3">True/False</option>                    
+                    <option value="3">True/False</option>
                 </select>
 
                 <h2>Amount of questions:</h2>
@@ -40,20 +40,20 @@ function MainPage () {
                 <h2>Select time:</h2>
                 <select>
                     <option value="4">1</option>
-                    <option value="5">2</option>   
-                    <option value="6">5</option>                       
-                </select>            
-                
+                    <option value="5">2</option>
+                    <option value="6">5</option>
+                </select>
+
             </div>
             <div className="button-box">
-                    <button onClick={() => navigate("/statistics")}>
+                    <button onClick={() => navigate("/quiz")}>
                         Start quiz
                     </button>
-                    <button onClick={() => navigate("/results")}>
+                    <button onClick={() => navigate("/statistics")}>
                         See my stats
                     </button>
             </div>
-            
+
         </div>
     )
 }
