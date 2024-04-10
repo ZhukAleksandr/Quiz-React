@@ -1,3 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to right, #d9e9e4, #b8d9c6 , #9bf8c2);   
+  font-family: Arial, Helvetica, sans-serif;  
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,16 +22,57 @@
   text-align: center;
 }
 
+h1,
+h2 {
+  font-weight: 700;  
+}
 
-.setting-box {
+h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+h2 {
+  margin-bottom: 0.6em;
+}
+
+
+.quiz-box {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  min-width: 500px;
+  min-width: 600px;
   align-items: center;
   min-height: 80vh;
-  border: 2px solid #000;
+  margin: 150px auto;
+  border-radius: 20px;
+  border:2px solid #5fc3e4;
+  padding: 10px;    
+  box-shadow:  5px 5px 10px #e6d8d8,
+              -5px -5px 10px #ffffff;
+}
 
+.quiz-settings{
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quiz-config{
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items:start;
+  min-height: 180px;
+  min-width: 100px;
+}
+
+select{
+  font-size: 1.5rem;
 }
 
 .button-box {
@@ -26,6 +84,18 @@
 }
 
 button{
-  border: 1px solid #000;
-  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border:2px solid #5fc3e4;
+  border-radius: 20px;
+  padding: 2px;
+  width: 170px;
+  height: 60px;
+  box-shadow:  5px 5px 10px #e6d8d8,
+              -5px -5px 10px #ffffff;
+  cursor: pointer;
+}
+
+button:hover{
+  transform: scale(1.1);
 }

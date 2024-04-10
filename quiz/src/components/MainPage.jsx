@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 
 
 function MainPage () {
+    const navigate = useNavigate();
 
     const createNumberOptions = () => {
         const options = [];
@@ -10,11 +12,11 @@ function MainPage () {
         return options;
     };
 
-    return (
-        <div className="setting-box">
+    return (        
+        <div className="quiz-box">
             <h1>Quiz main page</h1>
 
-            <div>
+            <div className="quiz-settings">
                 <h2>Select category:</h2>
                 <select>
                     <option value="1">Geogrphy</option>                    
@@ -47,10 +49,10 @@ function MainPage () {
                     <button>
                         Start quiz
                     </button>
-                    <button>
+                    <button onClick={() => navigate("/results")}>
                         See my stats
                     </button>
-                </div>
+            </div>
             
         </div>
     )
