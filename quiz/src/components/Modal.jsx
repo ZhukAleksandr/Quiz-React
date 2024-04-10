@@ -2,10 +2,9 @@
 
 function Modal ({ setIsOpen }) {    
     
-    return (
-        <div>        
+    return (       
             <div className="overlay">
-            <div className="modal">
+                <div className="modal">
                 <p>Are you sure?{open}</p>
                 <div className="button-box">
                     <button onClick={() => setIsOpen(false)}>
@@ -15,10 +14,9 @@ function Modal ({ setIsOpen }) {
                     <button>
                         Confirm
                     </button>
-                </div>
-                
+                </div>                
             </div>
-            </div>
+
         </div>
     )
 }
