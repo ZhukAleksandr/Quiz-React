@@ -42,6 +42,15 @@ h2 {
 }
 
 
+p {
+  font-size: 1.3rem;
+  padding-top: 10px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
 
 .quiz-box {
   display: flex;
@@ -80,6 +89,7 @@ h2 {
 }
 
 select{
+  text-align: center;
   font-size: 1.5rem;
 }
 

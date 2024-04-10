@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 
-
-function Modal ({ setIsOpen }) {    
+function Modal ({ setIsOpen }) {   
+  
+  const navigate = useNavigate();
     
     return (       
             <div className="overlay">
@@ -11,7 +13,7 @@ function Modal ({ setIsOpen }) {
                         Cancel
                     </button>
                         
-                    <button>
+                    <button onClick={() => navigate("/")}>
                         Confirm
                     </button>
                 </div>                
