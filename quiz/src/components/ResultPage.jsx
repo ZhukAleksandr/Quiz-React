@@ -4,15 +4,17 @@ function ResultPage () {
     const navigate = useNavigate();
 
     return (
-        <div>
-            <h2>Results</h2>
-            <h3>Thank you for completing this quiz. Here are your results</h3>
-            <h3>You answered 5 out of 10 questions correctly</h3>
+        <div className="quiz-box">
+            <h1>Results</h1>
+            <h2>Thank you for completing this quiz. <br/> Here are your results</h2>
+            <h2>You answered 5 out of 10 questions correctly</h2>
             <h3>Quiz configuration</h3>
-                <p>type True/False </p>
-                <p>category Geogrphy</p>
-                <p>time  2m</p>
-                <p>difficulty  Hard</p>
+            <div className="quiz-config"> 
+                <div>type True/False </div>
+                <div>category Geogrphy</div>
+                <div>time  2m</div>
+                <div>difficulty  Hard</div>
+            </div>
             <div>
             <div className="button-box">
                     <button>

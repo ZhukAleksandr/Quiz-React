@@ -5,8 +5,7 @@ import ResultPage from "./components/ResultPage";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Quiz</h1>
+    <div className="App">      
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route path="/results" element={<ResultPage />}></Route>

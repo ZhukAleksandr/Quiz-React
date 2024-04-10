@@ -13,10 +13,10 @@ function MainPage () {
     };
 
     return (        
-        <div className="setting-box">
+        <div className="quiz-box">
             <h1>Quiz main page</h1>
 
-            <div>
+            <div className="quiz-settings">
                 <h2>Select category:</h2>
                 <select>
                     <option value="1">Geogrphy</option>                    
