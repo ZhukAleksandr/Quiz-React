@@ -46,7 +46,7 @@ function MainPage () {
                 
             </div>
             <div className="button-box">
-                    <button>
+                    <button onClick={() => navigate("/statistics")}>
                         Start quiz
                     </button>
                     <button onClick={() => navigate("/results")}>
