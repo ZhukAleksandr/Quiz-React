@@ -23,6 +23,6 @@ For now we only focus on creating the UI part without any actual logic, we will 
 [X] Upon pressing “Cancel” button, we just close this modal window 
 [X] Upon pressing “Confirm” button we need to navigate user back to configuration screen 
 [-] After answering the last question or if timer ends on the main quiz screen, we need to navigate users to the result screen 
-[-] On the result screen upon pressing the “Choose another quiz” button we need to navigate users to quiz configuration screen 
+[X] On the result screen upon pressing the “Choose another quiz” button we need to navigate users to quiz configuration screen 
 [-] On the result screen upon pressing the “Restart quiz” button we need to navigate users to main quiz screen and restart current quiz (with mock data for now) 
-[-] On the configuration scream upon pressing the “See my statistics” button we need to navigate to the newly created empty statistics screen
+[X] On the configuration scream upon pressing the “See my statistics” button we need to navigate to the newly created empty statistics screen

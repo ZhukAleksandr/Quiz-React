@@ -1,30 +1,30 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategory } from "../features/quiz/categorySlice";
 
 function MainPage() {
   const navigate = useNavigate();
 
-  const createNumberOptions = () => {
-    const options = [];
-    for (let i = 5; i <= 15; i++) {
-      options.push(
-        <option key={i} value={i}>
-          {i}
-        </option>
-      );
-    }
-    return options;
-  };
+  const dispatch = useDispatch();
+
+  const questionCategory = useSelector((state) => state.category);
+console.log(questionCategory);
+console.log(123);
 
   const [options, setOptions] = useState(null);
-  const [questionCategory, setQuestionCategory] = useState("");
+  // const [questionCategory, setQuestionCategory] = useState("");
   const [questionDifficulty, setQuestionDifficulty] = useState("");
   const [questionType, setQuestionType] = useState("");
   const [numberOfQuestions, setNumberOfQuestions] = useState(5);
 
   const handleCategoryChange = (event) => {
-    setQuestionCategory(event.target.value);
+  //   setQuestionCategory(event.target.value);
+  dispatch({
+    type: 'CHANGE_CATEGORY',
+    value: event.target.value
+  })
   };
 
   const handleDifficultyChange = event => {
@@ -45,15 +45,18 @@ function MainPage() {
       .then((response) => {
         setOptions(response.trivia_categories);
       });
-  }, [setOptions]);
+    
+    console.log(dispatch(fetchCategory()));
+  }, [dispatch]);
 
+  
   return (
     <div className="quiz-box">
       <h1>Quiz main page</h1>
 
       <div className="quiz-settings">
         <h2>Select category:</h2>
-        <select value={questionCategory} onChange={handleCategoryChange}>
+        <select value={dispatch(fetchCategory())} >
           <option>All</option>
           {options &&
             options.map((option) => (
