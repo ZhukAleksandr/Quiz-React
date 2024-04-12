@@ -1,41 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCategory } from "../features/quiz/categorySlice";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setQuestionCategory,
+  setQuestionDifficulty,
+  setQuestionType,
+  setNumberOfQuestions,
+  setTimeChoise,
+} from "../features/quiz/settingsSlice";
 
 function MainPage() {
   const navigate = useNavigate();
 
+  const category = useSelector((state) => state.settings.category);
+  const difficulty = useSelector((state) => state.settings.difficulty);
+  const type = useSelector((state) => state.settings.type);
+  const number = useSelector((state) => state.settings.number);
+  const time = useSelector((state) => state.settings.time);
+
   const dispatch = useDispatch();
 
-  const questionCategory = useSelector((state) => state.category);
-console.log(questionCategory);
-console.log(123);
+  console.log(time);
 
   const [options, setOptions] = useState(null);
-  // const [questionCategory, setQuestionCategory] = useState("");
-  const [questionDifficulty, setQuestionDifficulty] = useState("");
-  const [questionType, setQuestionType] = useState("");
-  const [numberOfQuestions, setNumberOfQuestions] = useState(5);
-
-  const handleCategoryChange = (event) => {
-  //   setQuestionCategory(event.target.value);
-  dispatch({
-    type: 'CHANGE_CATEGORY',
-    value: event.target.value
-  })
-  };
-
-  const handleDifficultyChange = event => {
-    setQuestionDifficulty(event.target.value)
-  }
-  const handleTypeChange = event => {
-    setQuestionType(event.target.value)
-  }
-	const handleAmountChange = event => {
-    setNumberOfQuestions(event.target.value)
-  }
 
   useEffect(() => {
     const apiUrl = `https://opentdb.com/api_category.php`;
@@ -45,19 +33,35 @@ console.log(123);
       .then((response) => {
         setOptions(response.trivia_categories);
       });
-    
-    console.log(dispatch(fetchCategory()));
-  }, [dispatch]);
+  }, [setOptions]);
 
-  
+  const handleCategoryChange = (event) => {
+    dispatch(setQuestionCategory(event.target.value));
+  };
+
+  const handleDifficultyChange = (event) => {
+    dispatch(setQuestionDifficulty(event.target.value));
+  };
+  const handleTypeChange = (event) => {
+    dispatch(setQuestionType(event.target.value));
+  };
+  const handleAmountChange = (event) => {
+    dispatch(setNumberOfQuestions(event.target.value));
+  };
+
+  const handleTimeChange = (event) => {
+    dispatch(setTimeChoise(event.target.value));
+  };
+
+
   return (
     <div className="quiz-box">
       <h1>Quiz main page</h1>
 
       <div className="quiz-settings">
         <h2>Select category:</h2>
-        <select value={dispatch(fetchCategory())} >
-          <option>All</option>
+        <select value={category} onChange={handleCategoryChange}>
+          <option>{category}</option>
           {options &&
             options.map((option) => (
               <option value={option.id} key={option.id}>
@@ -67,30 +71,49 @@ console.log(123);
         </select>
 
         <h2>Select difficulty:</h2>
-        <select value={questionDifficulty} onChange={handleDifficultyChange}>
-            <option value="" key="difficulty-0">All</option>
-            <option value="easy" key="difficulty-1">Easy</option>
-            <option value="medium" key="difficulty-2">Medium</option>
-            <option value="hard" key="difficulty-3">Hard</option>
+        <select value={difficulty} onChange={handleDifficultyChange}>
+          <option value="" key="difficulty-0">
+            Any Difficulty
+          </option>
+          <option value="easy" key="difficulty-1">
+            Easy
+          </option>
+          <option value="medium" key="difficulty-2">
+            Medium
+          </option>
+          <option value="hard" key="difficulty-3">
+            Hard
+          </option>
         </select>
 
         <h2>Select type:</h2>
-        <select value={questionType} onChange={handleTypeChange}>
-            <option value="" key="type-0">All</option>
-            <option value="multiple" key="type-1">Multiple Choice</option>
-            <option value="boolean" key="type-2">True/False</option>
-          </select>
+        <select value={type} onChange={handleTypeChange}>
+          <option value="" key="type-0">
+            Any type
+          </option>
+          <option value="multiple" key="type-1">
+            Multiple Choice
+          </option>
+          <option value="boolean" key="type-2">
+            True/False
+          </option>
+        </select>
 
         <h2>Amount of questions:</h2>
-        <p>Выбранное значение: {numberOfQuestions}</p>       
-        <input type="range" min={5} max={15} value={numberOfQuestions} onChange={handleAmountChange}/>
-        
+        <p>Выбранное значение: {number}</p>
+        <input
+          type="range"
+          min={5}
+          max={15}
+          value={number}
+          onChange={handleAmountChange}
+        />
 
         <h2>Select time:</h2>
-        <select>
-          <option value="4">1m</option>
-          <option value="5">2m</option>
-          <option value="6">5m</option>
+        <select value={time} onChange={handleTimeChange}>
+          <option value="1">1m</option>
+          <option value="2">2m</option>
+          <option value="5">5m</option>
         </select>
       </div>
       <div className="button-box">

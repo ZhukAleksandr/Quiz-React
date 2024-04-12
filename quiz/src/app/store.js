@@ -1,10 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import categorySlice from '../features/quiz/categorySlice'
+import settingsSlice from '../features/quiz/settingsSlice'
 
 export const store = configureStore({
   reducer: {
-    categorySlice
+    settings: settingsSlice
   },
 })
-
-console.log(store.reducer);
