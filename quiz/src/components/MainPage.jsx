@@ -23,14 +23,12 @@ function MainPage() {
 
   const dispatch = useDispatch();
 
-
   // const [options, setOptions] = useState(null);
 
-  useEffect(() => {   
-    dispatch(fetchOptions())
-    console.log("DISPATCH");    
+  useEffect(() => {
+    dispatch(fetchOptions());
+    console.log("DISPATCH");
   }, [dispatch]);
-
 
   const handleCategoryChange = (event) => {
     dispatch(setQuestionCategory(event.target.value));
@@ -50,7 +48,7 @@ function MainPage() {
     dispatch(setTimeChoise(event.target.value));
   };
 
-console.log(category);         
+  console.log(category);
 
   return (
     <div className="quiz-box">
@@ -59,14 +57,13 @@ console.log(category);
       <div className="quiz-settings">
         <h2>Select category:</h2>
         <select value={category} onChange={handleCategoryChange}>
-          
           <option>Any category</option>
           {options &&
-              options.map((option) => (
-                <option value={option.id} key={option.id}>
-                  {option.name}
-                </option>
-              ))}
+            options.map((option) => (
+              <option value={option.id} key={option.id}>
+                {option.name}
+              </option>
+            ))}
         </select>
 
         <h2>Select difficulty:</h2>
@@ -122,7 +119,5 @@ console.log(category);
     </div>
   );
 }
-
-
 
 export default MainPage;

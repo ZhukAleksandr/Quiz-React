@@ -35,8 +35,12 @@ const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
-    setQuestionCategory (state, action) {
+    setQuestionCategory (state, action) {      
+      
       state.category = action.payload
+      if(state.category === 'Any category') {
+        state.category = ""
+      }
     },
     setQuestionDifficulty (state, action) {
       state.difficulty = action.payload
@@ -57,8 +61,9 @@ const settingsSlice = createSlice({
       //     state.difficulty = []
       // }
     },
-    setQuestionType (state, action) {
-      state.type = action.payload
+    setQuestionType (state, action) {        
+      const validTypes = ["multiple", "boolean", ""];
+      state.type = validTypes.includes(action.payload) ? action.payload : "";
     },
     setNumberOfQuestions (state, action) {
       state.number = action.payload
