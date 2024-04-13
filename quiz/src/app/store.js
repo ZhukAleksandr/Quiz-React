@@ -6,3 +6,6 @@ export const store = configureStore({
     settings: settingsSlice
   },
 })
+
+
+console.log(store.getState());

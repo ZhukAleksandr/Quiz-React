@@ -1,29 +1,43 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// export const fetchCategory = createAsyncThunk(
-//   "quiz/fetchingCategory",
-//   async () => {
-//     const res = await fetch("https://opentdb.com/api_category.php");
-//     const data = await res.json();    
-//     return data;
-//   }
-// );
+export const fetchOptions = createAsyncThunk(
+  "settings/fetchOptions",
+  async (_, {rejectWithValue}) => {
+    try{
+      const res = await fetch("https://opentdb.com/api_category.php");
+    
+      if(!res.ok){
+        throw new Error("ServerError!!!");
+      }
+      const data = await res.json();  
+      // console.log(data.trivia_categories);  
+      return data.trivia_categories;
+    }
+    catch(error) {
+      return rejectWithValue(error.message);
+    }    
+  }
+);
+
 
 const initialState = {  
   category: [],
   difficulty: '',
   type: '',
   number: '5',
-  time: '1'
+  time: '1',
+/*   status: null,
+  error: null,
+  options: null */
 }
 
 const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
-    setQuestionCategory (state, action) {
-      state.category = action.payload
-    },
+    // setQuestionCategory (state, action) {
+    //   state.category = action.payload
+    // },
     setQuestionDifficulty (state, action) {
       state.difficulty = action.payload
       // switch(action.payload){
@@ -53,11 +67,33 @@ const settingsSlice = createSlice({
       state.time = action.payload
     },
   },
+  extraReducers: /* { */
+    (builder) => {     
+      builder.addCase(fetchOptions.fulfilled, (state, action) => {
+        
+        state.category = action.payload
+        // console.log(state.category);
+      })
+    // [fetchSettings.pending]: (state) => {
+    //   state.status = 'loading';
+    //   state.error = null;
+    // },
+    // [fetchSettings.fulfilled]: (state, action) => {
+    //   state.status = 'resolved';
+    //   state.category = action.payload;
+    // },
+    /* [fetchSettings.rejected]: (state, action) => {}, */
+  }
 });
 
-console.log(settingsSlice);
+
+
+
+
+
+
 // console.log(settingsSlice.actions.setQuestionCategory());
 
-export const { setQuestionCategory, setQuestionDifficulty, setQuestionType, setNumberOfQuestions, setTimeChoise } = settingsSlice.actions;
+export const { /* setQuestionCategory, */ setQuestionDifficulty, setQuestionType, setNumberOfQuestions, setTimeChoise } = settingsSlice.actions;
 export default settingsSlice.reducer;
 

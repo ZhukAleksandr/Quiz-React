@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setQuestionCategory,
+  // setQuestionCategory,
   setQuestionDifficulty,
   setQuestionType,
   setNumberOfQuestions,
   setTimeChoise,
+  fetchOptions,
 } from "../features/quiz/settingsSlice";
 
 function MainPage() {
@@ -21,22 +22,17 @@ function MainPage() {
 
   const dispatch = useDispatch();
 
-  console.log(time);
 
-  const [options, setOptions] = useState(null);
+  // const [options, setOptions] = useState(null);
 
-  useEffect(() => {
-    const apiUrl = `https://opentdb.com/api_category.php`;
+  useEffect(() => {   
+    dispatch(fetchOptions())
+    console.log("DISPATCH");    
+  }, [dispatch]);
 
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((response) => {
-        setOptions(response.trivia_categories);
-      });
-  }, [setOptions]);
 
   const handleCategoryChange = (event) => {
-    dispatch(setQuestionCategory(event.target.value));
+    dispatch(fetchOptions(event.target.value));
   };
 
   const handleDifficultyChange = (event) => {
@@ -53,6 +49,7 @@ function MainPage() {
     dispatch(setTimeChoise(event.target.value));
   };
 
+console.log(category);         
 
   return (
     <div className="quiz-box">
@@ -61,13 +58,14 @@ function MainPage() {
       <div className="quiz-settings">
         <h2>Select category:</h2>
         <select value={category} onChange={handleCategoryChange}>
-          <option>{category}</option>
-          {options &&
-            options.map((option) => (
-              <option value={option.id} key={option.id}>
-                {option.name}
-              </option>
-            ))}
+          
+          <option>{category.name}</option>
+          {category &&
+              category.map((category) => (
+                <option value={category.id} key={category.id}>
+                  {category.name}
+                </option>
+              ))}
         </select>
 
         <h2>Select difficulty:</h2>
@@ -123,5 +121,7 @@ function MainPage() {
     </div>
   );
 }
+
+
 
 export default MainPage;
