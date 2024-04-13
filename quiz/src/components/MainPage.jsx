@@ -3,7 +3,7 @@ import { useEffect } from "react";
 // import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  // setQuestionCategory,
+  setQuestionCategory,
   setQuestionDifficulty,
   setQuestionType,
   setNumberOfQuestions,
@@ -14,6 +14,7 @@ import {
 function MainPage() {
   const navigate = useNavigate();
 
+  const options = useSelector((state) => state.settings.options);
   const category = useSelector((state) => state.settings.category);
   const difficulty = useSelector((state) => state.settings.difficulty);
   const type = useSelector((state) => state.settings.type);
@@ -32,7 +33,7 @@ function MainPage() {
 
 
   const handleCategoryChange = (event) => {
-    dispatch(fetchOptions(event.target.value));
+    dispatch(setQuestionCategory(event.target.value));
   };
 
   const handleDifficultyChange = (event) => {
@@ -59,11 +60,11 @@ console.log(category);
         <h2>Select category:</h2>
         <select value={category} onChange={handleCategoryChange}>
           
-          <option>{category.name}</option>
-          {category &&
-              category.map((category) => (
-                <option value={category.id} key={category.id}>
-                  {category.name}
+          <option>Any category</option>
+          {options &&
+              options.map((option) => (
+                <option value={option.id} key={option.id}>
+                  {option.name}
                 </option>
               ))}
         </select>

@@ -21,23 +21,23 @@ export const fetchOptions = createAsyncThunk(
 
 
 const initialState = {  
-  category: [],
+  category: '',
   difficulty: '',
   type: '',
   number: '5',
   time: '1',
-/*   status: null,
-  error: null,
-  options: null */
+  // status: null,
+  // error: null,
+  options: []
 }
 
 const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
-    // setQuestionCategory (state, action) {
-    //   state.category = action.payload
-    // },
+    setQuestionCategory (state, action) {
+      state.category = action.payload
+    },
     setQuestionDifficulty (state, action) {
       state.difficulty = action.payload
       // switch(action.payload){
@@ -71,8 +71,8 @@ const settingsSlice = createSlice({
     (builder) => {     
       builder.addCase(fetchOptions.fulfilled, (state, action) => {
         
-        state.category = action.payload
-        // console.log(state.category);
+        state.options = action.payload
+        console.log(state.options);
       })
     // [fetchSettings.pending]: (state) => {
     //   state.status = 'loading';
@@ -91,9 +91,8 @@ const settingsSlice = createSlice({
 
 
 
-
 // console.log(settingsSlice.actions.setQuestionCategory());
 
-export const { /* setQuestionCategory, */ setQuestionDifficulty, setQuestionType, setNumberOfQuestions, setTimeChoise } = settingsSlice.actions;
+export const { setQuestionCategory, setQuestionDifficulty, setQuestionType, setNumberOfQuestions, setTimeChoise } = settingsSlice.actions;
 export default settingsSlice.reducer;
 
