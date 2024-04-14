@@ -10,6 +10,8 @@ import {
   setTimeChoise,
   fetchOptions,
 } from "../features/quiz/settingsSlice";
+import FetchButton from "./FetchButton"
+
 
 function MainPage() {
   const navigate = useNavigate();
@@ -27,7 +29,6 @@ function MainPage() {
 
   useEffect(() => {
     dispatch(fetchOptions());
-    console.log("DISPATCH");
   }, [dispatch]);
 
   const handleCategoryChange = (event) => {
@@ -47,8 +48,6 @@ function MainPage() {
   const handleTimeChange = (event) => {
     dispatch(setTimeChoise(event.target.value));
   };
-
-  console.log(category);
 
   return (
     <div className="quiz-box">
@@ -113,7 +112,8 @@ function MainPage() {
         </select>
       </div>
       <div className="button-box">
-        <button onClick={() => navigate("/quiz")}>Start quiz</button>
+        {/* <button onClick={() => navigate("/quiz")}>Start quiz</button> */}
+        <FetchButton />
         <button onClick={() => navigate("/statistics")}>See my stats</button>
       </div>
     </div>
