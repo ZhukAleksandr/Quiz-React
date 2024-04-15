@@ -29,6 +29,8 @@ const initialState = {
   options: [],
   questions: [],
   questionIndex: 0,
+  score: 0,
+
 };
 
 const settingsSlice = createSlice({
@@ -71,7 +73,10 @@ const settingsSlice = createSlice({
       state.time = action.payload;
     },
     setQuestions(state, action) {
-      state.questions.push(action.payload);      
+      // state.questions.push(action.payload);  
+      console.log(action.payload.map((i)=> console.log(i)));    
+      state.questions = action.payload;
+
     },
     setQuestionIndex(state){
       state.questionIndex += 1;
@@ -79,6 +84,9 @@ const settingsSlice = createSlice({
     setInitialIndex(state){
       state.questionIndex = 0;
     },
+    setScore(state){      
+      state.score += 1;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchOptions.fulfilled, (state, action) => {

@@ -35,8 +35,8 @@ function FetchButton() {
     await fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
-        dispatch(setQuestions(data.results)) 
+        console.log();
+        dispatch(setQuestions(data.results))
       });
     navigate("/quiz")
      

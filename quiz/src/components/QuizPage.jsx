@@ -6,6 +6,8 @@ import {
     setInitialIndex,
   } from "../features/quiz/settingsSlice";
 
+  import { useNavigate } from "react-router";
+
 
 function QuizPage () {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,19 +15,24 @@ function QuizPage () {
     const questions = useSelector((state) => state.settings.questions);
     const index = useSelector((state) => state.settings.questionIndex);
 
+    let type = {...questions}
+        console.log(type.type);
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const showCurrentQuestion = () => {
+        
         return questions[0][index].question
     }
 
     const handleChoise = () => {
         dispatch(setQuestionIndex());
         console.log(questions[0].length);
-        if(index > questions[0].length){
+        if(index >= questions[0].length - 1){
 
             dispatch(setInitialIndex())
+            navigate("/statistics")
         }
       };
     
@@ -46,6 +53,14 @@ function QuizPage () {
                     <li>{questions[0][2].incorrect_answers[1]}</li>
                     <li>{questions[0][2].incorrect_answers[2]}</li>
                 </ul>
+
+                {/* <ul>
+                    {questions.map((question, i) => (
+                    <li key={i} >
+                        {option}
+                    </li>
+                    ))}
+                </ul> */}
 
 
                 <button onClick={() => setIsOpen(true)}>End quiz</button>
