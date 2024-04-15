@@ -27,7 +27,8 @@ const initialState = {
   // status: null,
   // error: null,
   options: [],
-  questions: []
+  questions: [],
+  questionIndex: 0,
 };
 
 const settingsSlice = createSlice({
@@ -71,7 +72,13 @@ const settingsSlice = createSlice({
     },
     setQuestions(state, action) {
       state.questions.push(action.payload);      
-    }
+    },
+    setQuestionIndex(state){
+      state.questionIndex += 1;
+    },
+    setInitialIndex(state){
+      state.questionIndex = 0;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchOptions.fulfilled, (state, action) => {
@@ -87,5 +94,7 @@ export const {
   setNumberOfQuestions,
   setTimeChoise,
   setQuestions,
+  setQuestionIndex,
+  setInitialIndex,
 } = settingsSlice.actions;
 export default settingsSlice.reducer;

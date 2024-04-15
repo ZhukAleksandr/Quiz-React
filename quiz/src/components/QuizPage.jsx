@@ -1,13 +1,36 @@
 import { useState } from "react";
 import Modal from "./Modal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    setQuestionIndex,
+    setInitialIndex,
+  } from "../features/quiz/settingsSlice";
 
 
 function QuizPage () {
     const [isOpen, setIsOpen] = useState(false);
 
     const questions = useSelector((state) => state.settings.questions);
-console.log(questions.question);
+    const index = useSelector((state) => state.settings.questionIndex);
+
+
+    const dispatch = useDispatch();
+
+    const showCurrentQuestion = () => {
+        return questions[0][index].question
+    }
+
+    const handleChoise = () => {
+        dispatch(setQuestionIndex());
+        console.log(questions[0].length);
+        if(index > questions[0].length){
+
+            dispatch(setInitialIndex())
+        }
+      };
+    
+// console.log(handleNextQuestion());
+
     return (
         <>
             <div className="quiz-box">
@@ -15,9 +38,9 @@ console.log(questions.question);
                 <div className="timer">
                     00:00
                 </div>
-                <h2>{questions[0][2].question}</h2>
+                <h2>{showCurrentQuestion()}</h2>
                 <ul>
-                    <li>{questions[0][2].correct_answer}</li>
+                    <li onClick={handleChoise}>{questions[0][2].correct_answer}</li>
                     <li>{questions[0][2].incorrect_answers[0]
 }</li>
                     <li>{questions[0][2].incorrect_answers[1]}</li>
