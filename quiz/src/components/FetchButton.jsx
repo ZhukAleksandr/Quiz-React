@@ -30,16 +30,14 @@ function FetchButton() {
     }
     if (type.length) {
       apiUrl = apiUrl.concat(`&type=${type}`)
-    }
+    }/*  */
 
     await fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log();
         dispatch(setQuestions(data.results))
       });
-    navigate("/quiz")
-     
+    navigate("/quiz")     
   }
 
 

@@ -1,10 +1,10 @@
-
+import Score from "./quizPage/components/Score";
 
 function StatisticsPage () {
     return (
-        <div>
+        <div className="quiz-box">
             <h1>StatisticsPage</h1>
-            
+            <Score />
         </div>
     )
 }

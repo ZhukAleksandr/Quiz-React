@@ -3,7 +3,7 @@ import MainPage from "./components/MainPage";
 import { Routes, Route } from "react-router-dom";
 import ResultPage from "./components/ResultPage";
 import StatisticsPage from "./components/StatisticsPage";
-import QuizPage from "./components/QuizPage";
+import QuizPage from "./components/quizPage/QuizPage";
 
 function App() {
   return (

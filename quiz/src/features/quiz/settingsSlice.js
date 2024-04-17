@@ -9,8 +9,7 @@ export const fetchOptions = createAsyncThunk(
       if (!res.ok) {
         throw new Error("ServerError!!!");
       }
-      const data = await res.json();
-      // console.log(data.trivia_categories);
+      const data = await res.json();      
       return data.trivia_categories;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -73,10 +72,8 @@ const settingsSlice = createSlice({
       state.time = action.payload;
     },
     setQuestions(state, action) {
-      // state.questions.push(action.payload);  
-      console.log(action.payload.map((i)=> console.log(i)));    
+      // state.questions.push(action.payload);        
       state.questions = action.payload;
-
     },
     setQuestionIndex(state){
       state.questionIndex += 1;
@@ -104,5 +101,6 @@ export const {
   setQuestions,
   setQuestionIndex,
   setInitialIndex,
+  setScore,
 } = settingsSlice.actions;
 export default settingsSlice.reducer;

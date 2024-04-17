@@ -47,8 +47,12 @@ p {
   padding-top: 10px;
 }
 
-input {
+input, select {
   margin-bottom: 10px;
+  box-shadow:  5px 5px 10px #e6d8d8,
+              -5px -5px 10px #ffffff;  
+  border:2px solid #5fc3e4;
+  border-radius: 20px;
 }
 
 
@@ -91,6 +95,7 @@ input {
 select{
   text-align: center;
   font-size: 1.5rem;
+  height: 45px;
 }
 
 .overlay {
@@ -178,4 +183,36 @@ button:hover{
   width: 100px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.question {
+  margin-top: 30px;
+  min-height: 80px;
+  width: 500px;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.answers{
+  width: 350px;
+  height: 300px;
+  padding: 15px 5px;
+  margin: 10px auto;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.answer{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  height: 45px;
+  box-shadow:  5px 5px 10px #e6d8d8,
+              -5px -5px 10px #ffffff;
+  cursor: pointer;
+  border:2px solid #5fc3e4;
+  border-radius: 20px;
 }
