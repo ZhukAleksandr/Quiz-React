@@ -23,8 +23,6 @@ const initialState = {
   type: "",
   number: "5",
   time: "1",
-  // status: null,
-  // error: null,
   options: [],
   questions: [],
   questionIndex: 0,
