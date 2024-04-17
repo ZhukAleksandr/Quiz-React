@@ -10,7 +10,6 @@ export const fetchOptions = createAsyncThunk(
         throw new Error("ServerError!!!");
       }
       const data = await res.json();
-      // console.log(data.trivia_categories);
       return data.trivia_categories;
     } catch (error) {
       return rejectWithValue(error.message);
