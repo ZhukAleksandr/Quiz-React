@@ -45,22 +45,6 @@ const settingsSlice = createSlice({
     },
     setQuestionDifficulty(state, action) {
       state.difficulty = action.payload;
-      // switch(action.payload){
-      //   case "easy":
-      //     state.difficulty = ['easy'];
-      //     break;
-      //   case "medium":
-      //     state.difficulty = ['medium'];
-      //     break;
-      //   case "hard":
-      //     state.difficulty = ['hard'];
-      //     break;
-      //   case "":
-      //     state.difficulty = [];
-      //     break;
-      //   default:
-      //     state.difficulty = []
-      // }
     },
     setQuestionType(state, action) {
       const validTypes = ["multiple", "boolean", ""];
@@ -69,12 +53,10 @@ const settingsSlice = createSlice({
     setNumberOfQuestions(state, action) {
       state.number = action.payload;
     },
-    setTimeChoise(state, action) {
+    setTimeChoice(state, action) {
       state.time = action.payload;
     },
     setQuestions(state, action) {
-      // state.questions.push(action.payload);  
-      console.log(action.payload.map((i)=> console.log(i)));    
       state.questions = action.payload;
 
     },
@@ -84,7 +66,7 @@ const settingsSlice = createSlice({
     setInitialIndex(state){
       state.questionIndex = 0;
     },
-    setScore(state){      
+    setScore(state){
       state.score += 1;
     }
   },
@@ -100,7 +82,7 @@ export const {
   setQuestionDifficulty,
   setQuestionType,
   setNumberOfQuestions,
-  setTimeChoise,
+  setTimeChoice,
   setQuestions,
   setQuestionIndex,
   setInitialIndex,

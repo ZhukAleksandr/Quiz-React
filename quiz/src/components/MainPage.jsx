@@ -7,7 +7,7 @@ import {
   setQuestionDifficulty,
   setQuestionType,
   setNumberOfQuestions,
-  setTimeChoise,
+  setTimeChoice,
   fetchOptions,
 } from "../features/quiz/settingsSlice";
 import FetchButton from "./FetchButton"
@@ -46,7 +46,7 @@ function MainPage() {
   };
 
   const handleTimeChange = (event) => {
-    dispatch(setTimeChoise(event.target.value));
+    dispatch(setTimeChoice(event.target.value));
   };
 
   return (
